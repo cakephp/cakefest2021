@@ -111,4 +111,13 @@ class UsersController extends AppController
             dd('Post OK');
         }
     }
+
+    public function search(string $email)
+    {
+        $users = $this->Users->find()
+            ->where([
+                // This is an SQL injection attack vector >> "email LIKE '$email%'"
+            ]);
+        $users->all()->extract('email')->toArray();
+    }
 }
