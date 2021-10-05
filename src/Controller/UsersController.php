@@ -104,4 +104,11 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function contact()
+    {
+        if ($this->request->is('post')) {
+            dd('Post OK');
+        }
+    }
 }
