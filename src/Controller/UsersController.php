@@ -120,4 +120,15 @@ class UsersController extends AppController
             ]);
         $users->all()->extract('email')->toArray();
     }
+
+    public function search2(string $email)
+    {
+        $this->Users->getConnection()
+            // SQL injection attack vector >> ->execute("select * from users where email='$email'")
+            ->execute("select * from users where email=:email", [
+                'email' => $email
+            ])
+            ->count();
+        $this->viewBuilder()->setTemplate('search');
+    }
 }
