@@ -6,6 +6,11 @@
 /tmp/*
 /vendor/*
 
+# Assets #
+##########
+/webroot/manifest.json
+/webroot/assets/*
+
 # OS generated files #
 ######################
 .DS_Store
@@ -40,4 +45,6 @@ nbproject/*
 # Visual Studio Code
 .vscode
 # Sass preprocessor
-.sass-cache/
+.sass-cache
+# node
+/node_modules/*

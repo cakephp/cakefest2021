@@ -31,15 +31,7 @@
     <?= $this->fetch('script') ?>
 </head>
 <body class="bg-gray-50 h-full">
-    <nav class="absolute right-4">
-        <?= $this->Html->link('Logout', [
-            'controller' => 'Login', 'action' => 'logout',
-        ], [
-            'class' => 'text-md text-gray-500',
-        ]) ?>
-    </nav>
     <main class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
     </main>
 </body>

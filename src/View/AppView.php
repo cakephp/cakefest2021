@@ -37,5 +37,10 @@ class AppView extends View
      */
     public function initialize(): void
     {
+        $this->loadHelper('Authentication.Identity');
+        $this->loadHelper('Vite');
+        $this->loadHelper('Form', [
+            'templates' => 'app_form',
+        ]);
     }
 }
