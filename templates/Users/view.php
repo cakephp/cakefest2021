@@ -20,6 +20,9 @@
             <table>
                 <tr>
                     <th><?= __('First Name') ?></th>
+                    <?php
+                        // XSS injection >> $user->first_name
+                    ?>
                     <td><?= h($user->first_name) ?></td>
                 </tr>
                 <tr>
