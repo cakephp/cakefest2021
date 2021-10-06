@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\ORM\Behavior\CounterCacheBehavior;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -46,7 +47,9 @@ class FilesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-
+        $this->addBehavior(CounterCacheBehavior::class, [
+            'Groups' => ['files_count'],
+        ]);
         $this->belongsTo('Groups', [
             'foreignKey' => 'group_id',
             'joinType' => 'INNER',
