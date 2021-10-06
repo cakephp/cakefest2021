@@ -149,6 +149,14 @@ return [
             'className' => 'Apcu',
             'prefix' => 'throttle_'
         ],
+        'users' => [
+            'className' => FileEngine::class,
+            'prefix' => 'users_',
+            'path' => CACHE,
+            'serialize' => true,
+            'duration' => '+1 years',
+            'url' => env('CACHE_USERS_URL', null),
+        ],
     ],
 
     /*
