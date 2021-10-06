@@ -18,7 +18,10 @@ class GroupsController extends AppController
      */
     public function index()
     {
-        $groups = $this->paginate($this->Groups);
+
+        $query = $this->Groups->find();
+        $query->cache('groupsIndex_' . md5(json_encode($this->request->getQuery())));
+        $groups = $this->paginate($query);
 
         $this->set(compact('groups'));
     }
