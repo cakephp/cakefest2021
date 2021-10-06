@@ -27,6 +27,7 @@ services:
       - XDEBUG_MODE=debug,profile
       - XDEBUG_CONFIG=output_dir=/application/tmp client_host=host.docker.internal
       - CACHE_USERS_URL=redis://cakefest2021_redis:6379
+      - EMAIL_TRANSPORT_DEFAULT_URL=debug://
     ports:
       - "8099:80"
 
