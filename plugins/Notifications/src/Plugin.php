@@ -11,7 +11,9 @@ use Cake\Datasource\ModelAwareTrait;
 use Cake\Event\Event;
 use Cake\Http\MiddlewareQueue;
 use Cake\Mailer\MailerAwareTrait;
+use Cake\Queue\QueueManager;
 use Cake\Routing\RouteBuilder;
+use Notifications\Worker\VirusNotificationWorker;
 
 /**
  * Plugin for Notifications
@@ -100,7 +102,11 @@ class Plugin extends BasePlugin
                     return;
                 }
 
-                $this->getMailer('Notifications.Tags')->send('virus', [$tagged]);
+                $callable = [VirusNotificationWorker::class, 'execute'];
+                $arguments = ['taggedId' => $tagged->id];
+                $options = ['config' => 'default'];
+
+                QueueManager::push($callable, $arguments, $options);
             });
     }
 }

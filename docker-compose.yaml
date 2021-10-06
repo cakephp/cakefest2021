@@ -23,11 +23,12 @@ services:
       - ./:/application
     environment:
       - WEB_DOCUMENT_ROOT=/application/webroot
-      - DATABASE_URL=postgres://my_app:secret@cakefest2021_postgres:5432/my_app
+      - DATABASE_URL=postgres://my_app:secret@cakefest2021_postgres:5432/my_app?persistent=true
       - XDEBUG_MODE=debug,profile
       - XDEBUG_CONFIG=output_dir=/application/tmp client_host=host.docker.internal
       - CACHE_USERS_URL=redis://cakefest2021_redis:6379
       - EMAIL_TRANSPORT_DEFAULT_URL=debug://
+      - QUEUE_DEFAULT_URL=redis://cakefest2021_redis:6379
     ports:
       - "8099:80"
 

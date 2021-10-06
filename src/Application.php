@@ -47,8 +47,6 @@ class Application extends BaseApplication
      */
     public function bootstrap(): void
     {
-        $this->addPlugin('Notifications');
-
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 
@@ -70,6 +68,8 @@ class Application extends BaseApplication
         }
 
         // Load more plugins here
+        $this->addPlugin('Notifications');
+        $this->addPlugin('Cake/Queue');
     }
 
     /**
