@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Middleware\FullCacheMiddleware;
 use App\Middleware\ProfilerMiddleware;
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
@@ -100,7 +101,7 @@ class Application extends BaseApplication
             // Catch any exceptions in the lower layers,
             // and make an error page/response
             ->add(new ErrorHandlerMiddleware(Configure::read('Error')))
-
+            ->add(new FullCacheMiddleware())
             // Handle plugin/theme assets like CakePHP normally does.
             ->add(new AssetMiddleware([
                 'cacheTime' => Configure::read('Asset.cacheTime'),
