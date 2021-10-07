@@ -13,6 +13,9 @@
         <!-- Set this value based on your local path.
         <env name="DATABASE_TEST_URL" value="sqlite:////home/mark/code/cakefest2021/acceptance.sqlite" />
         -->
+        <env name="CACHE_DEFAULT_URL" value="array://" />
+        <env name="CACHE_CAKECORE_URL" value="array://" />
+        <env name="CACHE_CAKEMODEL_URL" value="array://" />
     </php>
 
     <!-- Add any additional test suites you want to run here -->
