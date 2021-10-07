@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Behavior\InvalidateUsersBehavior;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -47,6 +48,7 @@ class GroupsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior(InvalidateUsersBehavior::class);
 
         $this->hasMany('Files', [
             'foreignKey' => 'group_id',

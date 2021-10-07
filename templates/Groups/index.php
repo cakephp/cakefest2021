@@ -13,6 +13,7 @@
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
+                    <th><?= $this->Paginator->sort('files_count') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -23,6 +24,7 @@
                 <tr>
                     <td><?= $this->Number->format($group->id) ?></td>
                     <td><?= h($group->name) ?></td>
+                    <td><?= h($group->files_count) ?></td>
                     <td><?= h($group->created) ?></td>
                     <td><?= h($group->modified) ?></td>
                     <td class="actions">

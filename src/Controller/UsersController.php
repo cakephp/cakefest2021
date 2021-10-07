@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Cache\Cache;
+
 /**
  * Users Controller
  *
@@ -30,12 +32,13 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view(string $id = null)
     {
-        $user = $this->Users->get($id, [
-            'contain' => ['Groups'],
-        ]);
-
+        $user = Cache::remember('user_' . $id, function () use ($id) {
+            return $this->Users->get($id, [
+                'contain' => ['Groups'],
+            ]);
+        }, 'users');
         $this->set(compact('user'));
     }
 

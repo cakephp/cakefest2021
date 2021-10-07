@@ -11,6 +11,14 @@ namespace App\Controller;
  */
 class FilesController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->loadComponent('Paginator', [
+            'paginator' => new \Cake\Datasource\SimplePaginator(),
+        ]);
+    }
+
     /**
      * Index method
      *

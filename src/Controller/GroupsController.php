@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Cache\Cache;
+use Cake\ORM\Query;
+
 /**
  * Groups Controller
  *
@@ -18,7 +21,15 @@ class GroupsController extends AppController
      */
     public function index()
     {
-        $groups = $this->paginate($this->Groups);
+
+        $query = $this->Groups->find();
+        $query->counter(function (Query $q) {
+            return Cache::remember('groupsCount', function () use ($q) {
+                return $q->count();
+            });
+        });
+        $query->cache('groupsIndex_' . md5(json_encode($this->request->getQuery())));
+        $groups = $this->paginate($query);
 
         $this->set(compact('groups'));
     }
