@@ -10,7 +10,9 @@
         <ini name="memory_limit" value="-1"/>
         <ini name="apc.enable_cli" value="1"/>
 
-        <env name="DATABASE_TEST_URL" value="sqlite:////Users/markstory/code/cakefest2021/acceptance.sqlite" />
+        <!-- Set this value based on your local path.
+        <env name="DATABASE_TEST_URL" value="sqlite:////home/mark/code/cakefest2021/acceptance.sqlite" />
+        -->
     </php>
 
     <!-- Add any additional test suites you want to run here -->
