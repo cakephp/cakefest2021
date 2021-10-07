@@ -68,6 +68,8 @@ class Application extends BaseApplication
         }
 
         // Load more plugins here
+        $this->addPlugin('Notifications');
+        $this->addPlugin('Cake/Queue');
     }
 
     /**

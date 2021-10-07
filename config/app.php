@@ -430,4 +430,12 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
+    'Queue' => [
+        'default' => [
+            // A DSN for your configured backend. default: null
+            'url' => env('QUEUE_DEFAULT_URL', null),
+            // The name of a configured logger, default: null
+            'logger' => 'stdout',
+        ]
+    ],
 ];
